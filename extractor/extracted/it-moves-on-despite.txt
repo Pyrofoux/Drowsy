@@ -1,0 +1,1424 @@
+
+       It Moves On Despite                                       You are an experienced Captain in Her Majesty's Folent Army, traveling from the Capital to Redtock in order to aid in battle there. You stop to rest at a military camp about 80 miles away from the city; it seems this camp is a popular resting spot for traveling Folent civilians.
+
+# BITSY VERSION 5.4
+
+! ROOM_FORMAT 1
+
+PAL 0
+2,62,204
+168,205,255
+243,241,252
+
+PAL 1
+255,59,75
+255,160,65
+255,230,230
+
+PAL 2
+176,80,255
+100,255,195
+255,255,255
+
+ROOM 0
+0,0,0,0,a,a,a,a,a,a,a,a,a,a,a,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,a,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,c,b,g,0,0,c,b,g,0,0,0,a
+a,0,0,0,d,e,f,0,0,0,e,f,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,c,b,g,0,0,c,b,g,0,0,0,a
+a,0,0,0,d,e,f,0,0,d,e,f,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,c,b,g,0,0,c,b,g,0,0,0,a
+a,0,0,0,d,e,f,0,0,d,e,f,0,0,a,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,a,a
+a,a,a,0,0,a,0,0,0,a,0,0,0,0,0,a
+a,a,0,0,0,a,0,0,a,a,0,0,a,0,0,a
+a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a
+NAME Day1
+PAL 0
+
+ROOM 1
+0,0,0,0,a,0,a,a,a,a,a,h,h,a,a,a
+0,0,0,0,0,0,0,0,0,0,0,0,i,0,a,a
+0,0,0,0,0,0,0,0,h,0,0,0,i,0,0,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,i,i
+h,0,0,0,c,h,g,0,0,h,h,h,0,0,0,a
+a,0,0,0,d,e,f,0,0,d,e,f,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,c,b,h,0,0,c,b,g,0,0,0,a
+a,0,0,0,d,h,f,0,0,d,e,f,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,c,h,g,0,0,c,h,g,0,0,0,a
+a,0,0,0,h,e,h,0,0,d,h,f,0,0,a,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,h,a
+a,a,a,0,h,0,0,0,0,h,0,0,0,0,0,a
+a,a,0,0,h,h,0,0,a,a,0,0,a,0,0,a
+a,h,a,a,a,a,a,a,a,a,a,a,a,a,a,a
+NAME Day2
+PAL 1
+
+ROOM 2
+0,0,0,0,a,a,a,a,a,a,a,a,a,a,a,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,a,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,j,a
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,0,0,0,0,0,c,b,g,0,0,0,a
+a,0,0,0,0,0,0,0,0,d,e,f,0,0,0,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,0,a
+a,0,0,0,0,0,0,0,0,c,b,g,0,0,0,a
+a,0,0,0,0,0,f,0,0,d,e,f,0,0,a,a
+a,0,0,0,0,0,0,0,0,0,0,0,0,0,a,a
+a,a,a,0,0,a,0,0,0,a,0,0,0,0,0,a
+a,a,0,0,0,a,0,0,a,a,0,0,a,0,0,a
+a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a
+NAME Day3
+ITM 0 14,2
+PAL 2
+
+TIL a
+00000000
+00000010
+00010010
+00100000
+00000100
+10001001
+00000010
+01000000
+NAME Dirt
+
+TIL b
+00000000
+00000000
+11111111
+00000000
+10000001
+00000000
+00000000
+00000000
+NAME TentMidTop
+
+TIL c
+00000000
+00000000
+00000111
+00001000
+00001001
+00010100
+00010100
+00100010
+NAME TentTopLeft
+
+TIL d
+00100010
+00100010
+01000010
+01000001
+10000001
+11111111
+00000000
+00000000
+NAME TentBotLeft
+
+TIL e
+01100000
+00010000
+00000000
+00000000
+00000000
+11111111
+00000000
+00000000
+NAME TentBotMid
+
+TIL f
+00011000
+00001000
+11001000
+00001100
+00000100
+11111100
+00000000
+00000000
+NAME TentBotRight
+
+TIL g
+00000000
+00000000
+11000000
+00100000
+00100000
+10010000
+00010000
+00010000
+NAME TentTopRight
+
+TIL h
+10000000
+10001000
+00101001
+10111100
+11111111
+01111111
+00111100
+00011100
+>
+00000000
+00101000
+00101100
+10011101
+11111111
+01111111
+00111110
+00111110
+NAME Fire
+WAL true
+
+TIL i
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+NAME FakeWall
+WAL true
+
+TIL j
+00011000
+00011000
+01111110
+01111110
+00011000
+00011000
+00011000
+00011000
+
+SPR 10
+01111100
+10101100
+11111010
+01001001
+01110000
+11000000
+01000000
+10100000
+>
+01111100
+10101100
+11111010
+01001010
+01110000
+11000000
+01000000
+10100000
+NAME GreedyMaDay2
+DLG SPR_p
+POS 1 3,5
+
+SPR 11
+01111100
+01000110
+11111110
+01010110
+00111100
+00011000
+00011000
+00100100
+NAME CommanderDay2
+DLG SPR_i
+POS 1 8,8
+
+SPR 12
+00010100
+00100010
+00100010
+00100010
+01000010
+01000001
+10000001
+11111111
+NAME TBL2
+DLG SPR_q
+POS 1 9,11
+
+SPR 13
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+11111111
+NAME TBM2
+DLG SPR_r
+POS 1 10,11
+
+SPR 14
+00010000
+00010000
+00011000
+00001000
+11001000
+00001100
+00000100
+11111100
+NAME TBR2
+DLG SPR_s
+POS 1 11,11
+
+SPR 15
+00000000
+00000000
+00000000
+00000000
+11000000
+00100000
+00100000
+10010000
+NAME TUR2
+DLG SPR_t
+POS 1 11,10
+
+SPR 16
+00000000
+00000000
+00000000
+00000000
+11111111
+00000000
+10000000
+00000000
+NAME TUM2
+DLG SPR_u
+POS 1 10,10
+
+SPR 17
+00000000
+00000000
+00000000
+00000000
+00000111
+00001000
+00001001
+00010100
+NAME TUL2
+DLG SPR_v
+POS 1 9,10
+
+SPR 18
+00001010
+00011110
+00100000
+10001000
+01000000
+00111111
+00000010
+00000000
+NAME WolfA3
+DLG SPR_w
+POS 2 12,3
+
+SPR 19
+00000000
+11111000
+00000100
+00000110
+00000010
+01101010
+10010001
+10010000
+>
+00000000
+11111000
+00000100
+00000110
+00000010
+01101010
+10010010
+10010000
+NAME WolfB3
+POS 2 13,3
+
+SPR A
+11111110
+10111111
+11111111
+01011010
+01111110
+00011000
+00011000
+00100100
+>
+00000000
+11111110
+10111111
+11111111
+01011010
+01111110
+00011000
+00100100
+POS 0 1,1
+
+SPR a
+01111110
+11111011
+10101000
+11111000
+00100100
+11100000
+00100000
+10010000
+>
+01111110
+11111010
+10101011
+11111000
+00100100
+11100000
+00100000
+10010000
+NAME MoralsMan
+DLG SPR_0
+POS 0 9,5
+
+SPR b
+00001010
+00011110
+00100000
+10001000
+01000000
+00111111
+00000010
+00000000
+NAME WolfA
+DLG SPR_2
+POS 0 12,2
+
+SPR c
+00000000
+11111000
+00000100
+00000110
+00000010
+01101010
+10010001
+10010000
+>
+00000000
+11111000
+00000100
+00000110
+00000010
+01101010
+10010010
+10010000
+NAME WolfB
+DLG SPR_1
+POS 0 13,2
+
+SPR d
+01111000
+11111110
+01010100
+01111100
+00011000
+00011000
+00100100
+00100100
+>
+00011110
+01111111
+00101010
+00111110
+00011000
+00011000
+00100100
+00100100
+NAME MasterMan
+DLG SPR_3
+POS 0 11,2
+
+SPR f
+01111100
+10101100
+11111010
+01001010
+01110000
+11000000
+01000000
+10100000
+>
+01111100
+10101100
+11111010
+01001001
+01110000
+11000000
+01000000
+10100000
+NAME GreedyMan
+DLG SPR_5
+POS 0 3,11
+
+SPR g
+00111100
+01000010
+01010101
+10000001
+10000001
+01001000
+01001000
+00010100
+>
+00111100
+01000010
+01010101
+10000001
+10000010
+10001000
+10001000
+00010100
+NAME Mother
+DLG SPR_6
+POS 0 4,14
+
+SPR h
+00000000
+00000000
+00111000
+01010100
+00111000
+00010000
+00010000
+00101000
+>
+00000000
+00000000
+00000000
+00111000
+01010100
+00111000
+00010000
+00101000
+NAME Child
+DLG SPR_7
+POS 0 5,14
+
+SPR i
+01111100
+01000110
+11111110
+01010110
+00111100
+00011000
+00011000
+00100100
+NAME CommanderMan
+DLG SPR_8
+POS 0 8,8
+
+SPR j
+00010100
+00100010
+00100010
+00100010
+01000010
+01000001
+10000001
+11111111
+NAME ActTentBL
+DLG SPR_e
+POS 0 9,11
+
+SPR k
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+11111111
+NAME ActTentBM
+DLG SPR_d
+POS 0 10,11
+
+SPR l
+00010000
+00010000
+00011000
+00001000
+11001000
+00001100
+00000100
+11111100
+NAME ActTentBR
+DLG SPR_c
+POS 0 11,11
+
+SPR m
+00000000
+00000000
+00000000
+00000000
+11000000
+00100000
+00100000
+10010000
+NAME ActTentUR
+DLG SPR_a
+POS 0 11,10
+
+SPR n
+00000000
+00000000
+00000000
+00000000
+11111111
+00000000
+10000000
+00000000
+NAME ActTentUM
+DLG SPR_9
+POS 0 10,10
+
+SPR o
+00000000
+00000000
+00000000
+00000000
+00000111
+00001000
+00001001
+00010100
+NAME ActTentUL
+DLG SPR_b
+POS 0 9,10
+
+SPR p
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan1
+DLG SPR_4
+POS 0 1,6
+
+SPR q
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan2
+DLG SPR_f
+POS 0 1,9
+
+SPR r
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan3
+DLG SPR_g
+POS 0 14,6
+
+SPR s
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan4
+DLG SPR_h
+POS 0 14,9
+
+SPR t
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan5
+DLG SPR_m
+POS 1 1,9
+
+SPR u
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan6
+DLG SPR_n
+POS 1 14,6
+
+SPR v
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME SoldierMan7
+DLG SPR_l
+POS 1 14,9
+
+SPR w
+00000000
+00000010
+00001110
+00001011
+00001111
+11111011
+00111111
+11000010
+NAME MasterManDead
+DLG SPR_j
+POS 1 14,2
+
+SPR x
+00001010
+00011110
+00100000
+10001000
+01000000
+00111111
+00000010
+00000000
+NAME WolfADay2
+DLG SPR_k
+POS 1 12,3
+
+SPR y
+00000000
+11111000
+00000100
+00000110
+00000010
+01101010
+10010001
+10010000
+>
+00000000
+11111000
+00000100
+00000110
+00000010
+01101010
+10010010
+10010000
+NAME WolfBDay2
+POS 1 13,3
+
+SPR z
+01111110
+11111011
+10101000
+11111000
+00100100
+11100000
+00100000
+10010000
+>
+01111110
+11111010
+10101011
+11111000
+00100100
+11100000
+00100000
+10010000
+NAME MoralsManDay2
+DLG SPR_o
+POS 1 8,5
+
+SPR 1a
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME Soldier31
+DLG SPR_y
+POS 2 1,9
+
+SPR 1b
+11111110
+10111111
+11111111
+00000000
+01111100
+00011000
+00011000
+00100100
+>
+11111110
+10111111
+11111111
+00000000
+00111100
+01011000
+00011000
+00100100
+NAME Soldier32
+DLG SPR_z
+POS 2 14,6
+
+SPR 1c
+01111100
+10101100
+11111010
+01001010
+01110000
+11000000
+01000000
+10100000
+>
+01111100
+10101100
+11111010
+01001001
+01110000
+11000000
+01000000
+10100000
+NAME Greed3
+DLG SPR_x
+POS 2 4,14
+
+SPR 1d
+01111110
+11111011
+10101000
+11111000
+00100100
+11100000
+00100000
+10010000
+>
+01111110
+11111010
+10101011
+11111000
+00100100
+11100000
+00100000
+10010000
+NAME Morals3
+DLG SPR_17
+POS 2 7,10
+
+SPR 1e
+01111100
+01000110
+11111110
+01010110
+00111100
+00011000
+00011000
+00100100
+NAME Commander3
+DLG SPR_16
+POS 2 12,13
+
+SPR 1f
+00010100
+00100010
+00100010
+00100010
+01000010
+01000001
+10000001
+11111111
+NAME TBL3
+DLG SPR_10
+POS 2 9,11
+
+SPR 1g
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+11111111
+NAME TBM3
+DLG SPR_11
+POS 2 10,11
+
+SPR 1h
+00010000
+00010000
+00011000
+00001000
+11001000
+00001100
+00000100
+11111100
+NAME TMR3
+DLG SPR_12
+POS 2 11,11
+
+SPR 1i
+00000000
+00000000
+00000000
+00000000
+11000000
+00100000
+00100000
+10010000
+NAME TUR3
+DLG SPR_13
+POS 2 11,10
+
+SPR 1j
+00000000
+00000000
+00000000
+00000000
+11111111
+00000000
+10000000
+00000000
+NAME TUM3
+DLG SPR_14
+POS 2 10,10
+
+SPR 1k
+00000000
+00000000
+00000000
+00000000
+00000111
+00001000
+00001001
+00010100
+NAME TUL3
+DLG SPR_15
+POS 2 9,10
+
+ITM 0
+00000000
+00000010
+00001111
+00001011
+00001111
+11111011
+00111111
+11000010
+NAME DeadBoy
+DLG ITM_0
+
+DLG SPR_0
+"""
+{sequence
+  - Laugh if you want, but I'm trying to end this war. I understand why my royal garb make you skeptical. That other aristocrat over there certainly doesn't help my case. But I swear... If I have to talk to every General, every prince and princess, and every rotten aristocrat in both Relshia and Folent, I'll do it.{d1 = d1 + 1}
+  - Please don't look at me like that. I'm sure you understand even better than I do why this war needs to end.
+}
+"""
+
+DLG ITM_0
+You bury Fleesh's master. She mournfully thanks you with a nod.{d3 = d3 + 1}
+
+DLG SPR_8
+"""
+{sequence
+  - {shk}CAPTAIN!!!{shk} I'm in charge around here. Surely, you've come to relieve me of this accursed camp! Look at this map here! See all these squads; they're all going to fall unless I (and my soldiers) are moved {shk}HERE{shk}. And as you can see... {shk}I'M NOT THERE!{shk}{d1 = d1 + 1}
+  - Last week, our control of the region looked like this! Now, we've lost this, this, and the {shk}{wvy}entire river!{shk}{wvy} I tried to tell the higher-ups what would happen (and how I could prevent it). They didn't listen; they never do, and we're gonna lose this war cause of it.
+}
+"""
+
+DLG SPR_9
+"""
+{
+  - d1 >= 8 ?
+    Time to go to bed.              
+    
+    You have a dream of gunfire and blood. This is commonplace. These kind of dreams are no longer nightmares. Loud bangs, both from dreams and reality, stopped waking you long ago. It would have been good to have awakened though.(exit "Day2,8,11")
+  - else ?
+    You can't go to sleep, yet. You haven't talked to everyone here. You want to cover all your bases, no surprises.
+}
+"""
+
+DLG SPR_a
+"""
+{
+  - d1 >= 8 ?
+    Time to go to bed.              
+    
+    You have a dream of gunfire and blood. This is commonplace. These kind of dreams are no longer nightmares. Loud bangs, both from dreams and reality, stopped waking you long ago. It would have been good to have awakened though.(exit "Day2,8,11")
+  - else ?
+    You can't go to sleep, yet. You haven't talked to everyone here. You want to cover all your bases, no surprises.
+}
+"""
+
+DLG SPR_b
+"""
+{
+  - d1 >= 8 ?
+    Time to go to bed.              
+    
+    You have a dream of gunfire and blood. This is commonplace. These kind of dreams are no longer nightmares. Loud bangs, both from dreams and reality, stopped waking you long ago. It would have been good to have awakened though.(exit "Day2,8,11")
+  - else ?
+    You can't go to sleep, yet. You haven't talked to everyone here. You want to cover all your bases, no surprises.
+}
+"""
+
+DLG SPR_c
+"""
+{
+  - d1 >= 8 ?
+    Time to go to bed.              
+    
+    You have a dream of gunfire and blood. This is commonplace. These kind of dreams are no longer nightmares. Loud bangs, both from dreams and reality, stopped waking you long ago. It would have been good to have awakened though.(exit "Day2,8,11")
+  - else ?
+    You can't go to sleep, yet. You haven't talked to everyone here. You want to cover all your bases, no surprises.
+}
+"""
+
+DLG SPR_d
+"""
+{
+  - d1 >= 8 ?
+    Time to go to bed.              
+    
+    You have a dream of gunfire and blood. This is commonplace. These kind of dreams are no longer nightmares. Loud bangs, both from dreams and reality, stopped waking you long ago. It would have been good to have awakened though.(exit "Day2,8,11")
+  - else ?
+    You can't go to sleep, yet. You haven't talked to everyone here. You want to cover all your bases, no surprises.
+}
+"""
+
+DLG SPR_e
+"""
+{
+  - d1 >= 8 ?
+    Time to go to bed.              
+    
+    You have a dream of gunfire and blood. This is commonplace. These kind of dreams are no longer nightmares. Loud bangs, both from dreams and reality, stopped waking you long ago. It would have been good to have awakened though.(exit "Day2,8,11")
+  - else ?
+    You can't go to sleep, yet. You haven't talked to everyone here. You want to cover all your bases, no surprises.
+}
+"""
+
+DLG SPR_4
+"""
+{sequence
+  - This is so boring... I want to {shk}FIGHT{shk} those Relshin bastards! Not stand and sleep and stand and sleep 100 miles from the front!
+    {d1 = d1 + 1}
+  - I thought it was the captain's fault we're stuck here. He looks weak, but {wvy}oh boy{wvy}, he's got more fight than I do. It's just the f***ing higher-ups who don't know how to use good soldiers.
+}
+"""
+
+DLG SPR_f
+"""
+{sequence
+  - He appears to be asleep...
+  - {wvy}ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
+    ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ{wvy}
+  - You gently take the gun he's grasping and place it by his side.
+}
+"""
+
+DLG SPR_g
+"""
+{sequence
+  - I ain't a dog person, but that wolf just radiates competency.
+  - I feel so much safer with that fellow around.
+  - {shk}Not... not that I'd be scared otherwise!{shk}
+}
+"""
+
+DLG SPR_h
+"""
+{sequence
+  - You know I was as {rbw}starry-eyed{rbw} as the rest of these soldiers when I joined the Folent war cause. It wasn't combat that killed my delusions; I've never seen combat. It was eyes like yours: they ain't dead, just sad. {d1 = d1 + 1}
+  - I'm sorry, man. I hope I never see anything like what you've seen.
+}
+"""
+
+DLG SPR_2
+"""
+{sequence
+  - This grey wolf is absolutely massive.{d1 = d1 + 1}
+  - It feels like she could single-handedly take on a tank.
+}
+"""
+
+DLG SPR_1
+The force of this wolf's tail alone could probably knock you butt first into the dirt.
+
+DLG SPR_3
+"""
+{sequence
+  - This is Fleesh; she's my pride and joy. I've bred a h*** of a lot of wolves, but Fleesh...  she's better than every one of them combined, in every way!{d1 = d1 + 1}
+  - She's beaten me at chess several times. I am so proud of her.
+}
+"""
+
+DLG SPR_5
+"""
+{sequence
+  - This place needs more guns and more tents. I'm sure General Hammid will agree when we finalize our {wvy}lucrative{wvy} deal on munitions.{d1 = d1 + 1}
+  - What? I'm not a man to censor myself in the presence of those beneath. My popularity with common people holds no power over me. All that matters are my bombs and guns.
+  - Be gone, soldier. Or you'll find yourself demoted, when I get to the Capital.
+}
+"""
+
+DLG SPR_6
+"""
+{sequence
+  - Can you help my daughter and me? Are you in charge here? The thing on your shoulder is the same as the captain's... Please, It's not safe for her. Can't you spare just one guard?{d1 = d1 + 1}
+  - We were visiting family in Redtock; we just want to get back to the Capital.
+}
+"""
+
+DLG SPR_7
+The child plays with a rock, tossing it up in the air and catching it.
+
+DLG SPR_i
+"""
+{sequence
+  - {shk}{wvy}SON OF A TANK!{wvy}{shk} WHERE WERE YOU?!?!? Relshin bastards came out of nowhere, while you were {shk}sleeping{shk}!!! Thanks to my actions (and the bravery of my men), we killed every one of them, but they got a few of us and a few tents...{d2 = d2 + 1}
+  - {shk}{wvy}SON OF A TANK!{wvy}{shk} We've got no excess water to put these fires out. {shk}WHO THE H*** DECIDED A SECOND RIFLE FOR EVERY SOLDIER WAS MORE IMPORTANT THAN WATER!{shk} Now, we have to let it all burn down, and {wvy}hope{wvy} that it doesn't reach anything else.
+}
+"""
+
+DLG SPR_j
+You bury the wolf master. Fleesh mournfully thanks you with a nod.
+
+DLG SPR_k
+"""
+{sequence
+  - The wolf stares you dead in the eyes; she doesn't bark or even growl, but you feel immensely threatened. It would be wise not to take another step towards the body.{d2 = d2 + 1}
+  - Fleesh's master is clearly dead; there are pieces missing from his chest and head, but Fleesh won't let you get closer, no matter how much you try to make your well intentions known.
+}
+"""
+
+DLG SPR_l
+"""
+{sequence
+  - I don't know where you were, but the Relshins attacked. I knew I wouldn't be able to handle it; I  won't be able to if it happens again. {shk}I'm still shaking! I can't stop.{shk}{d2 = d2 + 1}
+  - I'm done. Tomorrow, I'll be AWOL. I don't think you'll stop me.
+}
+"""
+
+DLG SPR_m
+His eyes dart around restlessly, looking for threats that probably aren't there and aiming his gun at every movement outside the camp. 
+
+DLG SPR_n
+"""
+{sequence
+  - A Relshin rushed straight at me. I would have died if not for Fleesh. She took so many of them down; I swear the bullets just bounced straight off her. She's guarding her master, now. Bill tried to get close, but she ripped his head clean off.{d2 = d2 + 1}
+  - None of us are brave enough to do anything to Fleesh or her master, now. The only way her master's getting buried is if she lets us bury him.
+}
+"""
+
+DLG SPR_o
+"""
+{sequence
+  - I thought seeing this kind of thing would make me more inspired to end this madness. But now, I just want to curl up into a ball and do nothing.{d2 = d2 + 1}
+  - I over-romanticized this and what my reaction would be. I wish I could say my resolve is solidified, but I have no desire to do anything right now.
+  - Please tell me, do my eyes look like yours do?
+}
+"""
+
+DLG SPR_p
+"""
+{sequence
+  - ....{d2 = d2 + 1}
+  - ....
+}
+"""
+
+DLG SPR_q
+"""
+{
+  - d2 >= 6 ?
+    You can't fall asleep; you offer your tent to the others and stay up with another restless soldier for the entire uneventful night.(exit "Day3,8,11")
+  - else ?
+    What?!? No! You need to make sure everyone's OK!
+}
+"""
+
+DLG SPR_r
+"""
+{
+  - d2 >= 6 ?
+    You can't fall asleep; you offer your tent to the others and stay up with another restless soldier for the entire uneventful night.(exit "Day3,8,11")
+  - else ?
+    What?!? No! You need to make sure everyone's OK!
+}
+"""
+
+DLG SPR_s
+"""
+{
+  - d2 >= 6 ?
+    You can't fall asleep; you offer your tent to the others and stay up with another restless soldier for the entire uneventful night.(exit "Day3,8,11")
+  - else ?
+    What?!? No! You need to make sure everyone's OK!
+}
+"""
+
+DLG SPR_t
+"""
+{
+  - d2 >= 6 ?
+    You can't fall asleep; you offer your tent to the others and stay up with another restless soldier for the entire uneventful night.(exit "Day3,8,11")
+  - else ?
+    What?!? No! You need to make sure everyone's OK!
+}
+"""
+
+DLG SPR_u
+"""
+{
+  - d2 >= 6 ?
+    You can't fall asleep; you offer your tent to the others and stay up with another restless soldier for the entire uneventful night.(exit "Day3,8,11")
+  - else ?
+    What?!? No! You need to make sure everyone's OK!
+}
+"""
+
+DLG SPR_v
+"""
+{
+  - d2 >= 6 ?
+    You can't fall asleep; you offer your tent to the others and stay up with another restless soldier for the entire uneventful night.(exit "Day3,8,11")
+  - else ?
+    What?!? No! You need to make sure everyone's OK!
+}
+"""
+
+DLG SPR_w
+"""
+{
+  - {item "DeadBoy"} > 0 ?
+    The wolf looks at you and the nearest soldier with mournful appreciation.
+  - else ?
+    The wolf demonstrates no menace nor threatening intent to you, it will let you pass. You can feel her sorrow, even as she tries her best to contain it.
+}
+"""
+
+DLG SPR_x
+"""
+{sequence
+  - You know the mother and daughter, who came here two days ago, died. They had jewelry, but I couldn't bring myself to take it... I'd heard of many idiotic aristocrats who saw the war and were "born again." I promised myself the realities of the war wouldn't be a wall to my fortune, and it won't. I'm not an emotionally blind man; I steeled myself for soldiers' deaths. I didn't expect....      
+    I don't know exactly what I am going to do, but I will not let this be a wall. Perhaps, I can convince General Hammid that water is a resource he needs in bulk. I'm sure there is good I can do, even if it'll be a h*** of a lot less lucrative than munitions.{d3 = d3 + 1}
+  - ...
+}
+"""
+
+DLG SPR_y
+"""
+{sequence
+  - All night you were teaching me how to cope with everything. I'm not good, but I feel a lot better. Thanks, friend.{d3 = d3 + 1}
+  - What am I going to do? I'll stay in Her Majesty's army; there's still a war, and I'd rather be the one to suffer and die than anyone in any of our cities.
+}
+"""
+
+DLG SPR_z
+"""
+{sequence
+  - Fleesh has taken a liking to me, I think. Or at least, she's eating the food I gave her. Nobody else is willing to take care of her. I'm positive she can take care of herself, but she needs a home, not a war.{d3 = d3 + 1}
+  - All I hope is that I'm even half the master he was.
+}
+"""
+
+DLG SPR_10
+"""
+{
+  - d3 >= 6 ?
+    (end "You gather your belongings and head out. All bid you farewell and you do the same in turn for them.")
+  - else ?
+    You are not going to sleep here again, but when you leave, remember to collect your belongings from this tent.
+}
+"""
+
+DLG SPR_11
+"""
+{
+  - d3 >= 6 ?
+    (end "You gather your belongings and head out. All bid you farewell and you do the same in turn for them.")
+  - else ?
+    You are not going to sleep here again, but when you leave, remember to collect your belongings from this tent.
+}
+"""
+
+DLG SPR_12
+"""
+{
+  - d3 >= 6 ?
+    (end "You gather your belongings and head out. All bid you farewell and you do the same in turn for them.")
+  - else ?
+    You are not going to sleep here again, but when you leave, remember to collect your belongings from this tent.
+}
+"""
+
+DLG SPR_13
+"""
+{
+  - d3 >= 6 ?
+    (end "You gather your belongings and head out. All bid you farewell and you do the same in turn for them.")
+  - else ?
+    You are not going to sleep here again, but when you leave, remember to collect your belongings from this tent.
+}
+"""
+
+DLG SPR_14
+"""
+{
+  - d3 >= 6 ?
+    (end "You gather your belongings and head out. All bid you farewell and you do the same in turn for them.")
+  - else ?
+    You are not going to sleep here again, but when you leave, remember to collect your belongings from this tent.
+}
+"""
+
+DLG SPR_15
+"""
+{
+  - d3 >= 6 ?
+    (end "You gather your belongings and head out. All bid you farewell and you do the same in turn for them.")
+  - else ?
+    You are not going to sleep here again, but when you leave, remember to collect your belongings from this tent.
+}
+"""
+
+DLG SPR_16
+"""
+{sequence
+  - I've been thinking... Staring at my maps for a {wvy}long{wvy} time. I don't think even I could have prevented those {shk}Relshin bastards{shk} from worming their way through the front. But, I could and did stop them here. Of course, I was placed here by sheer luck. There need to be more intelligent decisions made to optimize our back line, but I am more than capable of making them without any {shk}royal{shk} pot stirring.{d3 = d3 + 1}
+  - I don't think you're here to take my camp, but if you did {shk}DON'T.{shk} This camp, as far from the front as it is, is vital to our citizens' survival.
+  - Safe travels, Captain.
+}
+"""
+
+DLG SPR_17
+"""
+{sequence
+  - Yeah, I'm doing better. I've got the will to walk, at least. I'm going back to the Capital. I can't be a {rbw}gallant hero{rbw}; I'm not ready.{d3 = d3 + 1}
+  - The other aristocrat is going to the Capital, too. We've decided to go together. Goodbye and good luck.
+}
+"""
+
+VAR d1
+0
+
+VAR d2
+0
+
+VAR d3
+0
+
+
+
