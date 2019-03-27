@@ -1,0 +1,27 @@
+
+avatars
+
+1 : transposition directe de l'exemple du MNIST
+	fenetre de 5 par 5
+	très petits batch (32)
+	dataset : 20 exemples
+
+	Mode collapse fort
+	les sorties se binarisent
+	
+1.1 : fenetre de 3x3, plus adaptée à la résolution de l'image
+
+1.2 : changement des poids :
+	plus 0 et 1 mais 0.1 et 0.9
+
+2 : augmentation du dataset (400 exemples)
+	Mode collapse moins fort
+	sorties moins binarisées
+	
+2.1 : entrainement long
+	les sorties se calent sur un ou deux exemples à chaque entrainement
+	et proposent de légères varations
+
+2.2 : changement de poids : repassage à 0 et 1
+	les sprites se binarisent plus vite
+	moins de bruit intermédiaire
