@@ -487,31 +487,6 @@ EXT 7,9 12 7,12
 EXT 8,9 12 8,12
 PAL 5
 
-ROOM 12
-0,0,0,0,0,0,7,15y,16q,181,182,0,0,0,0,0
-0,0,0,0,0,0,183,184,185,186,0,0,0,0,0,0
-0,0,0,0,0,0,0,187,188,189,0,0,0,0,0,0
-0,18a,0,18b,0,0,0,18c,18d,0,0,18e,18f,0,18g,00,
-18h,18i,0,18j,18k,0,0,0,0,0,0,18l,18m,18n,18o,18p
-0,18r,18s,18t,18u,0,0,0,0,0,0,18v,18w,18x,18y,18z0,
-190,191,192,193,18a,0,0,0,194,195,0,196,197,198,199,19a
-19b,19c,19d,19e,0,0,0,19g,19h,19i,0,19j,19k,19l,19m,19n
-19o,19p,19q,19r,19s,19t,19u,19v,19w,19x,19y,19z,1a0,1a1,1a2,1a3
-1a4,1a5,1a6,1a7,1a8,1a9,1aa,1ab,1ac,1ad,1ae,1af,1ag,1ah,1ai,1aj
-0,1ak,1al,1am,1an,1ao,1ap,1aq,1ar,1as,1at,1au,1av,1aw,1ax,1ay
-0,1az,1b0,1b1,1b2,1b3,1b4,1b5,1b6,1b7,1b8,1b9,1ba,1bb,1bc,1bd
-1be,1bf,1bg,1bh,1bi,1bj,1bk,1bl,1bm,1bn,1bo,1bp,1bq,1br,1bs,1bt
-1bu,1bv,1bw,1bx,1by,1bz,1c0,1c1,1c2,1c3,1c4,1c5,1c6,1c7,1c8,1c9
-0,rn,1ca,1cb,1cc,1cd,1ce,1cf,1cg,1ch,1ci,1cj,1ck,1cl,1cm,1cn
-1co,1cp,1cq,1c9,1cr,1cs,1ct,1cu,1cv,1cw,1cx,1cy,1cz,1d0,0,1d1
-NAME eyein
-EXT 7,14 13 7,14
-EXT 8,14 13 8,14
-EXT 9,14 13 9,14
-EXT 6,14 13 6,14
-END 0 7,0
-END 0 8,0
-PAL 6
 
 ROOM 13
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -21668,5 +21643,3 @@ My wetsuit, air tanks, skin, flesh and bones melt into the vitreous body, I am i
 
 VAR a
 42
-
-

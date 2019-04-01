@@ -3,17 +3,20 @@ let dirname = '../extracted';
 let writename = '../formatted';
 
 read();
-
 //avatars();
 
 let save = {};
 
 save.sprites = [];
+save.tiles = {};
+save.roomCompressed = [];
+save.rooms = [];
 
 function read()
 {
   fs.readdir(dirname, (err, files) =>
   {
+    console.log(__filename+" <<<")
     files.forEach(name =>
     {
       // Process only txt files
@@ -22,6 +25,9 @@ function read()
       let s = fs.readFileSync(dirname+'/'+name).toString();
       process(name,s);
     });
+
+    decompressRooms();
+
     write();
   });
 }
@@ -83,14 +89,19 @@ function processSprite(block)
     save.sprites.push(bin);
 }
 
-//Copy paste from just au dessus
-function processTile(name, block)
+function processTile(game, block)
 {
   const name = block.split(/\s/)[1];
 
   let data = block.split('\n');
     data.shift();
     data = data.splice(0,8);
+
+    if(data[0].length > 8)
+    {
+      console.log("Warning ! Game "+game+" has tiles resolution > 8x8. Consider removing it.")
+    }
+
 
     let bin = [];
 
@@ -102,18 +113,92 @@ function processTile(name, block)
         bin[i][j] = parseInt(data[i][j]);
       }
     }
-    save.sprites.push(bin);
+
+    save.tiles[game+"@@@"+name] = bin;
+
+}
+
+function processRoom(game, block)
+{
+
+  const name = block.split(/\s/)[1];
+
+  let data = block.split('\n');
+    data.shift();
+    data = data.splice(0,16);
+
+    let names = [];
+
+    for(let i in data)
+    {
+      names[i] = [];
+      let line = data[i].split(',');
+      for(let j in line)
+      {
+        let tileName = line[j];
+        names[i][j] = tileName;
+      }
+    }
+
+    save.roomCompressed[game+"@@@"+name] = names;
+
+    //Add the 0 empty tile for every room
+    save.tiles[game+"@@@0"] = Array(8).fill(Array(8).fill(0));
+
 }
 
 
+function decompressRooms()
+{
+  for(let name in save.roomCompressed)
+  {
+    let game = name.split("@@@")[0];
+    let room = save.roomCompressed[name];
+
+    let roomBin = [];
+
+    for(var gx = 0; gx < 16; gx++)
+    {
+
+      for(var gy = 0; gy < 16; gy++)
+      {
+        let tileName = room[gx][gy];
+        let tile = save.tiles[game+"@@@"+tileName];
+
+        for(var x = 0; x < 8; x++)
+        {
+          roomBin[gx*8+x] = [];
+          for(var y = 0; y < 8; y++)
+          {
+              if(!tile)console.log("Tile not found at "+game+"@@@"+tileName)
+           //console.log(game+" "+tileName);
+           //console.log(tile);
+           roomBin[gx*8+x][gy*8+y] = tile[x][y];
+          }
+        }
+      }
+    }
+
+
+    console.log(roomBin);
+    throw "STOP";
+
+
+    save.rooms.push(roomBin);
+
+  }
+}
 
 function write()
 {
-	for(let i in save)
-	{
-	  fs.writeFileSync(writename+'/'+i+'.json',JSON.stringify(save[i]));
-	  console.log("Wrote "+i+".json");
-	}
+	  //fs.writeFileSync(writename+'/'+i+'.json',JSON.stringify(save[i]));
+	  //console.log("Wrote "+i+".json");
+
+    fs.writeFileSync(writename+'/tiles.json',JSON.stringify(save.tiles));
+    console.log("Wrote tiles.json");
+    fs.writeFileSync(writename+'/rooms.json',JSON.stringify(save.rooms));
+    console.log("Wrote rooms.json");
+	  //console.log("Wrote "+i+".json");
 }
 
 
@@ -147,5 +232,5 @@ function avatars()
  }
 data;
 fs.writeFileSync(writename+'/avatars.json',JSON.stringify(data));
-console.log("saved avatars")
+console.log("Wrote avatars.json (from picture)")
 }
