@@ -12,7 +12,7 @@ class avatarGAN(object):
         
         self.size = 8
         self.channel = 1
-
+        self.kernelsize = 3
         self.filename = 'avatars'
 
 
@@ -23,7 +23,7 @@ class avatarGAN(object):
         #self.xTrain = self.xTrain*0.8 + 0.1
         self.xTrain = self.xTrain.reshape(-1, self.size, self.size, 1)
 
-        self.GAN = GAN.GAN(self.size, self.channel)
+        self.GAN = GAN.GAN(self.size, self.channel, self.kernelsize)
         self.discriminator =  self.GAN.discriminatorModel()
         self.adversarial = self.GAN.adversarialModel()
         self.generator = self.GAN.generator()
@@ -60,11 +60,11 @@ class avatarGAN(object):
             
             Aloss = self.adversarial.train_on_batch(noise, y)
             
-            #log_mesg = "%d: [D loss: %f, acc: %f]" % (i, Dloss[0], Dloss[1])
-            #log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Aloss[0], Aloss[1])
+            log_mesg = "%d: [D loss: %f, acc: %f]" % (i, Dloss[0], Dloss[1])
+            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Aloss[0], Aloss[1])
             
             
-            #print(log_mesg)
+            print(log_mesg)
             
             if saveInterval>0:
                 

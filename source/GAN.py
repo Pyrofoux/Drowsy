@@ -24,13 +24,18 @@ from keras.utils.generic_utils import get_custom_objects
 import tensorflow as tf
 
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 class GAN(object):
     
-    def __init__(self, size = 8, channel = 1):
+    def __init__(self, size = 8, channel = 1, kernelsize = 3):
         
         self.size = size
         self.channel = channel
-        
+        self.kernelsize = kernelsize
+        self.depth = 64
+        self.dropout = 0.4
         
         self.D = None #Discriminator
         self.G = None #Generator
@@ -47,9 +52,9 @@ class GAN(object):
         
         self.D = Sequential();
         
-        depth = 64
-        dropout = 0.4
-        kernelSize = 3
+        depth = self.depth
+        dropout = self.dropout
+        kernelSize = self.kernelsize
         
         # In: 28 x 28 x 1, depth = 1
         # Out: 14 x 14 x 1, depth=64
@@ -85,10 +90,10 @@ class GAN(object):
         
         self.G = Sequential()
         
-        dropout = 0.4
-        depth = 64*4 
+        dropout = self.dropout
+        depth = self.depth*4 
         dim = int(self.size/4) #Dépend de la taille des images
-        kernelSize = 3
+        kernelSize = self.kernelsize
         
         # In: 100
         # Out: dim x dim x depth
@@ -143,11 +148,15 @@ class GAN(object):
         if self.DM:
             return self.DM
         
+        #to display allocation
+        options = tf.RunOptions(report_tensor_allocations_upon_oom = True)
+        
+        
         optimizer = RMSprop(lr=0.0002, decay=6e-8)
         self.DM = Sequential()
         self.DM.add(self.discriminator())
         self.DM.compile(loss='binary_crossentropy', optimizer=optimizer,\
-            metrics=['accuracy'])
+            metrics=['accuracy'], options = options)
         return self.DM
     
     
@@ -156,10 +165,12 @@ class GAN(object):
         if self.AM:
             return self.AM
         
+        options = tf.RunOptions(report_tensor_allocations_upon_oom = True)
+        
         optimizer = RMSprop(lr=0.0001, decay=3e-8)
         self.AM = Sequential()
         self.AM.add(self.generator())
         self.AM.add(self.discriminator())
         self.AM.compile(loss='binary_crossentropy', optimizer=optimizer,\
-            metrics=['accuracy'])
+            metrics=['accuracy'], options = options)
         return self.AM

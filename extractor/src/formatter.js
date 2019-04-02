@@ -164,25 +164,18 @@ function decompressRooms()
       {
         let tileName = room[gx][gy];
         let tile = save.tiles[game+"@@@"+tileName];
-
         for(var x = 0; x < 8; x++)
         {
-          roomBin[gx*8+x] = [];
+          if(!roomBin[gx*8+x])roomBin[gx*8+x] = [];
           for(var y = 0; y < 8; y++)
           {
               if(!tile)console.log("Tile not found at "+game+"@@@"+tileName)
-           //console.log(game+" "+tileName);
-           //console.log(tile);
+
            roomBin[gx*8+x][gy*8+y] = tile[x][y];
           }
         }
       }
     }
-
-
-    console.log(roomBin);
-    throw "STOP";
-
 
     save.rooms.push(roomBin);
 
