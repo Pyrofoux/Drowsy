@@ -1,0 +1,22 @@
+Une erreur est survenue lors du démarrage du noyau
+2019󈚨󈚲 13:29:08.015548: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+2019󈚨󈚲 13:29:08.302018: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1433] Found device 0 with properties: 
+name: GeForce GTX 1050 major: 6 minor: 1 memoryClockRate(GHz): 1.493
+pciBusID: 0000:01:00.0
+totalMemory: 2.00GiB freeMemory: 1.61GiB
+2019󈚨󈚲 13:29:08.303774: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0
+2019󈚨󈚲 13:29:08.934371: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019󈚨󈚲 13:29:08.935055: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0 
+2019󈚨󈚲 13:29:08.935292: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0: N 
+2019󈚨󈚲 13:29:08.935591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1351 MB memory) ‑> physical GPU (device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2019󈚨󈚲 13:29:08.938640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0
+2019󈚨󈚲 13:29:08.938908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019󈚨󈚲 13:29:08.939194: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0 
+2019󈚨󈚲 13:29:08.939521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0: N 
+2019󈚨󈚲 13:29:08.940013: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1351 MB memory) ‑> physical GPU (device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2019󈚨󈚲 13:29:09.570240: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0
+2019󈚨󈚲 13:29:09.570618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019󈚨󈚲 13:29:09.570951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0 
+2019󈚨󈚲 13:29:09.571153: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0: N 
+2019󈚨󈚲 13:29:09.571481: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1351 MB memory) ‑> physical GPU (device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2019󈚨󈚲 13:29:11.256182: I tensorflow/stream_executor/dso_loader.cc:152] successfully opened CUDA library cublas64_100.dll locally

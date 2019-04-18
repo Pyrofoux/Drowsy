@@ -4,6 +4,11 @@ import matplotlib
 import json
 from matplotlib import pyplot as plt
 import numpy as np
+import tensorflow as tf
+
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+sess = tf.Session(config=config)
 
 
 class avatarGAN(object):
@@ -18,11 +23,11 @@ class avatarGAN(object):
 
         data = json.loads(open("../data/avatars.json").read())
         self.xTrain = np.array(data)
-        #self.xTrain = self.xTrain-0.5 # O = -1/2, 1 = 1/12
-        #self.xTrain = self.xTrain*0.5 + 0.25
-        #self.xTrain = self.xTrain*0.8 + 0.1
+        
+        
+        
         self.xTrain = self.xTrain.reshape(-1, self.size, self.size, 1)
-
+        print("Shape of data :", self.xTrain.shape)
         self.GAN = GAN.GAN(self.size, self.channel, self.kernelsize)
         self.discriminator =  self.GAN.discriminatorModel()
         self.adversarial = self.GAN.adversarialModel()
@@ -39,12 +44,10 @@ class avatarGAN(object):
             
         for i in range(trainSteps):
             
-           
             noise = np.random.uniform(-1.0, 1.0, size=[batchSize, 100])
             
             trainImgs = self.xTrain[np.random.randint(0, self.xTrain.shape[0], size=batchSize), :, :, :]
             fakeImgs = self.generator.predict(noise)
-            
             
             
             x = np.concatenate((trainImgs, fakeImgs))
@@ -57,25 +60,19 @@ class avatarGAN(object):
             y = np.ones([batchSize, 1]) 
             noise = np.random.uniform(-1.0, 1.0, size=[batchSize, 100])
             
-            
             Aloss = self.adversarial.train_on_batch(noise, y)
             
-            log_mesg = "%d: [D loss: %f, acc: %f]" % (i, Dloss[0], Dloss[1])
-            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Aloss[0], Aloss[1])
-            
-            
-            print(log_mesg)
             
             if saveInterval>0:
                 
-                if (i+1)%saveInterval==0:
+                if (i)%saveInterval==0:
                     
                     self.save()
                     
                     log_mesg = "%d: [D loss: %f, acc: %f]" % (i, Dloss[0], Dloss[1])
                     log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Aloss[0], Aloss[1])
                     print(log_mesg)
-                    self.plotImgs(save2file=True, samples=noiseInput.shape[0],noise=noiseInput, step=(i+1))
+                    self.plotImgs(save2file=True, samples=noiseInput.shape[0],noise=noiseInput, step=(i))
                     
                     
     def plotImgs(self, save2file=False, fake=True, samples=16, noise=None, step=0):
@@ -102,8 +99,6 @@ class avatarGAN(object):
                 image = images[i, :, :, :]
                 image = np.reshape(image, [self.size, self.size])
                     
-                if(i == 0):
-                    print(json.dumps(image.tolist()))
                 
                 plt.imshow(image, cmap='gray')
                 plt.axis('off')
@@ -126,10 +121,15 @@ class avatarGAN(object):
     
 if __name__ == '__main__':
     
+    
+    
+    print("Started.")
     avgan = avatarGAN()
     #timer = ElapsedTimer()
     avgan.load()
+    print("Model loaded.")
     avgan.train(trainSteps=100000, batchSize=128, saveInterval=1000) #100000 steps normalement et 500 interval
+    print("End of training.")
     #timer.elapsed_time()
     avgan.plotImgs(fake=True)
     avgan.plotImgs(fake=False)

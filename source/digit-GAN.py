@@ -14,6 +14,7 @@ from keras.optimizers import Adam, RMSprop
 
 from tensorflow.examples.tutorials.mnist import input_data
 
+import json
 
 class GAN(object):
     
@@ -156,6 +157,8 @@ class digitGAN(object):
 
         self.xTrain = input_data.read_data_sets("mnist",one_hot=True).train.images
         self.xTrain = self.xTrain.reshape(-1, self.imgRows, self.imgCols, 1).astype(np.float32)
+
+        print("Shape :",self.xTrain.shape)
 
         self.GAN = GAN(imgRows = 28, imgCols = 28, channel = 1)
         self.discriminator =  self.GAN.discriminatorModel()
