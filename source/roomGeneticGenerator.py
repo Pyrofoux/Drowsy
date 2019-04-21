@@ -1,25 +1,32 @@
 import numpy as np
+import pickle
 from matplotlib import pyplot as plt
 
 class geneticGenerator(object):
     
     def __init__(self):
         
-        self.eliteRate = 0.1
-        self.mutRate = 0.15
-        self.popSize = 10
+        
+        self.popSize = 15 
+        
+        self.randRate = 0.2  #% of entirely random individiuals in next gen
+        self.eliteRate = 0.2 #% of elite in next gen
+        self.mutRate = 0.15 #chance of mutation for each gene
+        
         self.imgSize = [128, 128]
         
         self.currentPop = randPopulation(self.popSize) 
         self.gen = 0
-        self.maxScore = None
-        self.minScore = None
+        
+        self.maxScore = 0
+        self.minScore = 0
+        self.medianScore = 0
+        self.bestIndiv = np.zeros([2,9])
     
     
     def run(self, iterations = 1):
         
-        
-        print("Gen %d" % self.gen)
+    
         
         
         #Evaluating population
@@ -30,6 +37,8 @@ class geneticGenerator(object):
         
         self.maxScore = couples[0][0]
         self.minScore = couples[len(couples)-1][0]
+        self.medianScore = np.median(scores)
+        self.bestIndiv = couples[0][1]
         
         ranked = [rules for score,rules in couples]
         
@@ -37,9 +46,9 @@ class geneticGenerator(object):
         elite = selectPop(ranked, self.eliteRate)
 
         #Next Generation
-        self.currentPop = nextGen(elite, self.popSize)
+        self.currentPop = nextGen(elite, size = self.popSize, randRate = self.randRate)
         
-        print("Score : [%d - %d]" % (self.maxScore, self.minScore))
+        print("Gen %d - Score : [%f - %f - %f]" % (self.gen, self.maxScore, self.medianScore, self.minScore))
         
         
         self.gen += 1
@@ -60,9 +69,11 @@ class geneticGenerator(object):
         
         return imgs
     
-    def generateImage(self, size = [128, 128], iterations = 5):
+    def generateImage(self, size = [128, 128], iterations = 5, rules = False):
         
-        rules = self.currentPop[np.random.choice(range(len(self.currentPop)))]
+        
+        if rules is False:
+            rules = self.currentPop[np.random.choice(range(len(self.currentPop)))]
         
         grid = randGrid(size = size)
         grid = applyRulesGrid(rules, grid, iterations)
@@ -89,18 +100,82 @@ class geneticGenerator(object):
         scores = self.discriminator.predict(shapedGrids)
         shapedScores = scores.reshape(-1)
         
+        
         return shapedScores
     
     def trainStep(self):
         
+        iterations = 10
+        
         self.run()
+        
+        #Stop trainning when results are really good (median > 0.9)
+        #Force training when results are really poor (max < 0.1)
+        #Max 10 iterations if not needed
+        while( (iterations > 1 or self.maxScore < 0.1)  and self.medianScore < 0.9):     
+            self.run()
+            iterations -= 1
     
+    def evaluateImg(self, img):
+        
+        score = self.discriminator.predict(img.reshape(-1, self.size[0], self.size[1], 1))
+        return score[0]
+    
+    
+    def save(self):
+        file = open('./saves/roomGenerator.txt','wb')
+        
+        disc = self.discriminator
+        
+        self.discriminator = "Set me up dynamically"
+        pickle.dump(self, file)
+        file.close()
+        
+        self.discriminator = disc
+        
+        self.savePanel()
 
-def nextGen(elite, size = 200):
+
+    def load(self):
+        file = open('./saves/roomGenerator.txt','rb')
+        dataPickle = file.read()
+        file.close()
+        self = pickle.load(dataPickle)
+        
+    def savePanel(self):
+        
+        
+        bestImg =  self.generateImage(rules = self.bestIndiv)
+        imgs = [bestImg] + self.generateImages(number = 8)
+         
+        plt.figure(figsize=(10,10))
+        
+        for i in range(9):
+            plt.subplot(3, 3, i+1)
+            image = imgs[i]
+            plt.imshow(image, cmap='gray')
+            plt.axis('off')
+            
+        plt.tight_layout()
+        
+        plt.savefig('./generated/rooms_%d' % self.gen,bbox_inches = 'tight', pad_inches = 0)
+        plt.close('all')
+
+def nextGen(elite, size = 200, randRate = 0.2):
     
+    
+    #Fill with elite
     gen = elite
     
-    for i in range(size-len(elite)):
+    
+    #Fill with random individuals
+    for i in range(int(size*randRate)):
+        
+        new = randRules()
+        gen.append(new)
+    
+    #Fill with mutations of elite
+    for i in range(len(gen)-len(elite)):
         
         base = elite[np.random.choice(range(len(elite)))]
         mutant = mutateRules(base)
@@ -172,25 +247,13 @@ def applyRulesGrid(rules, grid, iterations = 1):
         return nextGrid
     else:
         return applyRulesGrid(rules, nextGrid, iterations -1)
-         
-    
-    
-
-
-def applyRulesCellPow2(rules, state):
-    
-    powers = 2 ** np.arange(9)
-    bitIndex = 0
-    index = 0
-    for y in range(len(state)):
-        for x in range(len(state[y])):
-            bitIndex += state[y,x]*powers[index]
-            index += 1
-    
-    return rules[int(bitIndex)]
     
     
 def applyRulesCell(rules, state, value):
     
     neighbors = np.count_nonzero(state)-value
     return rules[value, neighbors]
+
+
+
+np.random

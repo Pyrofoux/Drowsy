@@ -111,13 +111,13 @@ class avatarGAN(object):
             plt.show()                    
                     
     def save(self):
-        self.adversarial.save_weights("./weights/avatar_adversarial.h5")
-        self.generator.save_weights("./weights/avatar_generator.h5")
+        self.adversarial.save_weights("./saves/avatar_adversarial.h5")
+        self.generator.save_weights("./saves/avatar_generator.h5")
         
     
     def load(self):
-        self.adversarial.load_weights("./weights/avatar_adversarial.h5")
-        self.generator.load_weights("./weights/avatar_generator.h5")
+        self.adversarial.load_weights("./saves/avatar_adversarial.h5")
+        self.generator.load_weights("./saves/avatar_generator.h5")
     
 if __name__ == '__main__':
     
