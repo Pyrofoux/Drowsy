@@ -153,7 +153,7 @@ class GAN(object):
         #options = tf.RunOptions(report_tensor_allocations_upon_oom = True)
         
         
-        optimizer = RMSprop(lr=0.0002, decay=6e-8)
+        optimizer = RMSprop(lr=1e-5, decay=6e-8)
         self.DM = Sequential()
         self.DM.add(self.discriminator())
         self.DM.compile(loss='binary_crossentropy', optimizer=optimizer,\

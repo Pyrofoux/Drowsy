@@ -31,36 +31,44 @@ class roomDisc(object):
         self.generator = generator
         
     
+    def getTrainData(self, batchSize):
+        
+        trainImgs = self.xTrain[np.random.randint(0, self.xTrain.shape[0], size=batchSize), :, :, :]
+ 
+        fakeImgs = self.generator.generateImages(number = batchSize, size = [self.size, self.size])
+        fakeImgs = np.reshape(fakeImgs, (-1, self.size, self.size, 1))
+        
+        x = np.concatenate((trainImgs, fakeImgs))
+        y = np.ones([2*batchSize, 1]) #1 for train image, 0 for fake
+        y[batchSize:, :] = 0
+    
+        return x,y
     
     def train(self, trainSteps=2000, batchSize=256, saveInterval=0):
-        
-        noiseInput = None
-        
-        if saveInterval>0:
-            noiseInput = np.random.uniform(-1.0, 1.0, size=[16, 100])
             
             
         for i in range(trainSteps):
             
             
-            trainImgs = self.xTrain[np.random.randint(0, self.xTrain.shape[0], size=batchSize), :, :, :]
- 
-            fakeImgs = self.generator.generateImages(number = batchSize, size = [self.size, self.size])
-            fakeImgs = np.reshape(fakeImgs, (-1, self.size, self.size, 1))
+            x,y = self.getTrainData(batchSize)
             
-            x = np.concatenate((trainImgs, fakeImgs))
-            y = np.ones([2*batchSize, 1]) #100 for train image, 0 for fake
-            y[batchSize:, :] = 0
-            
+            accuracy = 0           
+            iterations = 0
+            while (iterations < 30 and accuracy <= 0.6):
 
-            Dloss = self.discriminator.train_on_batch(x, y)
-
-            log= "%d: [D loss: %f, acc: %f]" % (i, Dloss[0], Dloss[1])
-            print(log)
+                
+                Dloss = self.discriminator.train_on_batch(x, y)
+    
+                #Dloss = self.discriminator.fit(x, y)
+                accuracy = Dloss[1]
+                iterations += 1
+                
+                
+                log= "%d - %d: [D loss: %f, acc: %f]" % (i, iterations, Dloss[0], Dloss[1])
+                print(log)
             
             
             self.generator.trainStep()
-            self.generator.showImg()
             
             
             
@@ -99,6 +107,6 @@ if __name__ == '__main__':
     roomGen.savePanel()
     
     print("Starting Mutual Training")
-    roomDisc.train(trainSteps=10000, batchSize=16, saveInterval=50)
+    roomDisc.train(trainSteps=10000, batchSize=32, saveInterval=1)
                     
                 

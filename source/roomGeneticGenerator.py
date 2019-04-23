@@ -7,7 +7,7 @@ class geneticGenerator(object):
     def __init__(self):
         
         
-        self.popSize = 15 
+        self.popSize = 32
         
         self.randRate = 0.2  #% of entirely random individiuals in next gen
         self.eliteRate = 0.2 #% of elite in next gen
@@ -21,7 +21,7 @@ class geneticGenerator(object):
         self.maxScore = 0
         self.minScore = 0
         self.medianScore = 0
-        self.bestIndiv = np.zeros([2,9])
+        self.bestIndiv = randIndiv()
     
     
     def run(self, iterations = 1):
@@ -69,52 +69,73 @@ class geneticGenerator(object):
         
         return imgs
     
-    def generateImage(self, size = [128, 128], iterations = 5, rules = False):
+    def generateImage(self, size = [128, 128], iterations = 5, indiv = False):
         
         
-        if rules is False:
-            rules = self.currentPop[np.random.choice(range(len(self.currentPop)))]
+        if indiv is False:
+            indiv = self.currentPop[np.random.choice(range(len(self.currentPop)))]
         
-        grid = randGrid(size = size)
+        rules, mean, sigma = indiv
+        
+        
+        #Initial Grid Generattion Selection here
+        
+        #Point to Point generation with deltas following Normal Distribution
+        #grid = randGrid(size = size, mean = mean, sigma = sigma)
+        
+        #2D Normal Distribution grid
+        #grid = randNormalGrid(size = size, mean = mean, sigma = sigma)
+        
+        #Unfiform distribution
+        grid = randUniformGrid(size = size)
+        
         grid = applyRulesGrid(rules, grid, iterations)
         return grid
     
-    def showImg(self, size = [128, 128], iterations = 5):
+    
+    
+    def showImg(self, size = [128, 128], iterations = 5, save = False):
         
-        img = self.generateImage(size = size, iterations = iterations)
+        
         plt.figure(figsize=(10,10))
-        plt.imshow(img, cmap='gray')
+        img = self.generateImage(size = size, iterations = iterations)
+        plt.imshow(img, cmap='gray', aspect='equal', shape=size)
         plt.axis('off')
+        
+        plt.imsave("./generated/lastShownRoom",img, cmap="gray")
+        
+        
+        
         
     def setDiscriminator(self, network):
         self.discriminator = network.discriminator
         
-    def evaluatePop(self, population):
-    
-        scores = [evaluate(population[i]) for i in range(len(population))]
-        
+    def evaluatePop(self, population):    
         
         #For each rules in population, apply them 5 times to a randGrid
-        grids = [applyRulesGrid(population[i],  randGrid(), 5)for i in range(len(population)) ]
+        grids = [self.generateImage(indiv = indiv, size = self.imgSize) for indiv in population]
         shapedGrids = np.array(grids).reshape(-1, self.imgSize[0], self.imgSize[1],1) 
         scores = self.discriminator.predict(shapedGrids)
         shapedScores = scores.reshape(-1)
         
         
         return shapedScores
+
+    
+    
     
     def trainStep(self):
         
-        iterations = 10
+        iterations = 0
         
         self.run()
         
-        #Stop trainning when results are really good (median > 0.9)
+        #Stop trainning when results are really good (median > 0.7)
         #Force training when results are really poor (max < 0.1)
-        #Max 10 iterations if not needed
-        while( (iterations > 1 or self.maxScore < 0.1)  and self.medianScore < 0.9):     
+        #Max 50 iterations if not needed
+        while( (iterations < 50 or self.maxScore < 0.1)  and self.medianScore < 0.7):     
             self.run()
-            iterations -= 1
+            iterations += 1
     
     def evaluateImg(self, img):
         
@@ -133,7 +154,8 @@ class geneticGenerator(object):
         
         self.discriminator = disc
         
-        self.savePanel()
+        #self.savePanel()
+        self.saveBest()
 
 
     def load(self):
@@ -145,7 +167,7 @@ class geneticGenerator(object):
     def savePanel(self):
         
         
-        bestImg =  self.generateImage(rules = self.bestIndiv)
+        bestImg =  self.generateImage(indiv = self.bestIndiv)
         imgs = [bestImg] + self.generateImages(number = 8)
          
         plt.figure(figsize=(10,10))
@@ -161,6 +183,12 @@ class geneticGenerator(object):
         plt.savefig('./generated/rooms_%d' % self.gen,bbox_inches = 'tight', pad_inches = 0)
         plt.close('all')
 
+
+    def saveBest(self):
+        
+        bestImg =  self.generateImage(indiv = self.bestIndiv)
+        plt.imsave("./generated/best_room_%d" % self.gen,bestImg, cmap="gray")
+
 def nextGen(elite, size = 200, randRate = 0.2):
     
     
@@ -171,14 +199,14 @@ def nextGen(elite, size = 200, randRate = 0.2):
     #Fill with random individuals
     for i in range(int(size*randRate)):
         
-        new = randRules()
+        new = randIndiv()
         gen.append(new)
     
     #Fill with mutations of elite
     for i in range(len(gen)-len(elite)):
         
         base = elite[np.random.choice(range(len(elite)))]
-        mutant = mutateRules(base)
+        mutant = mutateIndiv(base)
         gen.append(mutant)
     
     return gen
@@ -188,48 +216,44 @@ def nextGen(elite, size = 200, randRate = 0.2):
         
 def selectPop(pop, eliteRate = 0.1):
     return pop[:int(len(pop)*eliteRate)]
-    
 
-
+def mutateIndiv(indiv, rate = 0.15):
     
-    
-
-def evaluate(rules):
-    grid = randGrid()
-    grid = applyRulesGrid(rules, grid, 5)
+    (rules, mean, sigma) = indiv
     
     
-    #
-    # INCLUDE NETWORK HERE
-    #
-    #
-    
-    return np.random.uniform()
-
-def randRules():
-    ruleSize = [2,9]
-    rules = np.random.choice([0, 1], size=ruleSize).astype(int)
-    return rules
-
-def randGrid(size = [128, 128], probability = [99/100, 1/100]) :
-    grid = np.random.choice([0, 1], size=size, p=probability).astype(int)
-    return grid
-
-def randPopulation(size = 100):
-    return [randRules() for i in range(size)]
-
-def mutateRules(rules, rate = 0.15):
-    mutant = np.copy(rules)
+    #Mutate rules
+    mutantRules = np.copy(rules)
     for y in range(len(rules)):
         for x in range(len(rules[y])):
             if(np.random.uniform() <= rate):
-                mutant[y,x] = (mutant[y,x] == 0)*1
+                mutantRules[y,x] = (mutantRules[y,x] == 0)*1
 
-    return mutant
+    
+    #Mutate mean
+    if(np.random.uniform() <= rate):
+        mutantMean = mean + np.random.uniform(-20,20)
+        
+        if(mutantMean < 1):
+            mutantMean = 1
+        elif (mutantMean > 400):
+            mutantMean = 400     
+    else:
+        mutantMean = mean
+    
+    
+    #Mutate sigma
+    if(np.random.uniform() <= rate):
+        mutantSigma = sigma + np.random.uniform(-3,3)
+        
+        if(mutantSigma < 0):
+            mutantSigma = 0
+        elif (mutantSigma > 20):
+            mutantSigma = 20     
+    else:
+        mutantSigma = sigma
 
-
-
-
+    return (mutantRules, mutantMean, mutantSigma)
 
 def applyRulesGrid(rules, grid, iterations = 1):
     
@@ -251,9 +275,81 @@ def applyRulesGrid(rules, grid, iterations = 1):
     
 def applyRulesCell(rules, state, value):
     
+    
+    
     neighbors = np.count_nonzero(state)-value
     return rules[value, neighbors]
 
 
 
-np.random
+def randNormalGrid(size = [128, 128], mean = 64, sigma = 32) :
+    
+    number = 160
+    
+    points = np.random.normal(mean,sigma,(number,2)).round().astype(int)
+    
+    grid = np.zeros(size).astype(int)
+    
+    for couple in points:
+        
+        x,y = couple
+        
+        if(x < 0):
+            x = 0
+        if(x >= size[0]):
+            x = size[0]-1
+        
+        if(y < 0):
+            y = 0
+        if(y >= size[1]):
+            y = size[1]-1
+    
+        grid[x,y] = 1
+    
+    return grid
+
+
+def randGrid(size = [128, 128], mean = 64, sigma = 32) :
+    
+    
+    flatSize = size[0]*size[1]
+    
+    
+    flatGrid = np.zeros(flatSize).astype(int)
+    
+    current = 0
+    
+    while current < flatSize:
+        
+        delta = abs(round(np.random.normal(mean,sigma)))
+        current += delta
+        
+        if current < flatSize:
+            flatGrid[current] = 1
+    
+    return flatGrid.reshape(size)
+
+
+
+def randIndiv():
+    ruleSize = [2,9]
+    
+    #Rules of the cellular automata
+    rules = np.random.choice([0, 1], size=ruleSize).astype(int)
+    
+    #Mean of the normal distribution used to generate the map
+    mean = round(np.random.uniform(1,400))
+    
+    
+    #Sigma of the normal distribution used to generate the map
+    sigma = round(np.random.uniform(0,20))
+    
+    
+    return (rules, mean, sigma)
+
+def randPopulation(size = 100):
+    return [randIndiv() for i in range(size)]
+
+def randUniformGrid(size = [128, 128], probability = [99/100, 1/100]) :
+    grid = np.random.choice([0, 1], size=size, p=probability).astype(int)
+    return grid
