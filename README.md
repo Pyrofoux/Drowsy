@@ -58,11 +58,12 @@ You can find more information about GANs [here](https://skymind.ai/wiki/generati
 
   The shapes are evocative, allowing the player to imagine their meaning. 
  
-- **Diversity*
+- **Diversity**
 
  Slight Mode Collapse around 2 or 3 classes. Retraining a few times switch the classes.
  
  - **Performance**
+ 
  These performances where obtained after 2 hours of training, with a GTX 1050 and 2 Go of RAM.  
 
 
