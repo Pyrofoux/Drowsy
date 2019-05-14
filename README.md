@@ -5,7 +5,7 @@
 
 A Bitsy game generator, featuring  : 
  - a GAN to generate avatars
- - a state-of-the-art Discriminator Network / Genetic Generator coupling to generate rooms
+ - a whole new Discriminator Network / Genetic Generator coupling to generate rooms
  
  The AI generated game is available to [play here](https://pyrofoux.github.io/Drowsy/).
  
@@ -60,11 +60,27 @@ You can find more information about GANs [here](https://skymind.ai/wiki/generati
  
 - **Diversity**
 
- Slight Mode Collapse around 2 or 3 classes. Retraining a few times switch the classes.
- 
+  Slight Mode Collapse around 2 or 3 classes. Retraining a few times switch the classes.
  - **Performance**
  
- These performances where obtained after 2 hours of training, with a GTX 1050 and 2 Go of RAM.  
+  These performances where obtained after 2 hours of training, with a GTX 1050 and 2 Go of RAM.  
 
+
+# Rooms Generation
+
+## Dataset
+
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Room.png"  />
+
+Ignoring color palette, a Bitsy room is a 128x128 image with black and white pixels.
+The dataset is composed of 591 rooms, extracted with a custom scrapper used on these Bitsy games : 
+- (...)
+- (...)
+
+## Preliminary Results
+
+## Setting up a new structure
+
+## Final Results
 
 
