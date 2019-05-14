@@ -10,13 +10,27 @@ A Bitsy game generator, featuring  :
  The AI generated game is available to [play here](https://pyrofoux.github.io/Drowsy/).
  
  
-Here's the [project report](https://github.com/Pyrofoux/Drowsy/raw/master/final/rapport.pdf) (French). Full english documentation is coming soon.
+Here's the [project report](https://github.com/Pyrofoux/Drowsy/raw/master/final/rapport.pdf) (French).
+
+*Made during 2nd year of engineering school, at the École Nationale Supérieure de Cognitique (Bordeaux, 2019)*
 
 
+# Avatar generation 
 
-# GAN, but with an Antagonist Genetic Algorithm
+## Dataset
 
-This is the classic structure of a GAN : 
+
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Avatar.png"  />
+
+Ignoring color palette and animations, a Bitsy avatar is a 8x8 image with black and white pixels.
+The dataset is composed of 420 avatars, extracted from this compilation [tweet](https://twitter.com/ragzouken/status/939818949876830209).
+
+A few examples from the dataset : 
+
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/avatarDataset.png" />
+
+## Generative Adversarial Network (GAN)
+
 
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/gan.png" width="70%" />
 
@@ -28,5 +42,5 @@ This is the classic structure of a GAN :
 
 
 
-*Effectué dans le cadre du Projet Informatique Individuel, à l'ENSC (2019)*
+
 
