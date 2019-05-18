@@ -1,4 +1,4 @@
-# Drowsy - Bitsy game generator
+# Drowsy - a Bitsy game generator
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/titleImage.png" width="256px" height="256px" />
 </p>
@@ -44,6 +44,7 @@ The Antagonist is composed of the Discriminator network and a Generator network 
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/adversarialNetwork.png" width="40%" />
 </p>
 
+Since we process images, the chosen networks are CNNs.
 You can find more information about GANs [here](https://skymind.ai/wiki/generative-adversarial-network-gan).
 
 ## Results
@@ -52,34 +53,57 @@ You can find more information about GANs [here](https://skymind.ai/wiki/generati
 
 - **Data shape**
 
-  The Generator cannot produce binary data, only reals.
-  Produced avatars need a post-processing, to convert gray pixels to a black and white palette.
+  The Generator cannot produce binary data, only reals in the range \[0.0 1.0].
+  Produced avatars need a post-processing, to convert non-binary gray pixels to a black and white palette.
 - **Aesthetic**
 
-  The shapes are evocative, allowing the player to imagine their meaning. 
+  The shapes do look like Bitsy avatars. They are evocative, allowing the player to give them a meaning. 
  
 - **Diversity**
 
-  Slight Mode Collapse around 2 or 3 classes. Retraining a few times switch the classes.
+  Slight Mode Collapse around 2 or 3 classes at each training. Retraining just a few times switch the classes.
  - **Performance**
  
-  These performances where obtained after 2 hours of training, with a GTX 1050 and 2 Go of RAM.  
+   These performances where obtained after 2 hours of training on a PC, with a GTX 1050 and 2 Go of RAM.  
 
 
 # Rooms Generation
 
 ## Dataset
 
-<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Room.png"  />
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Room.png" width="70%"  />
 
 Ignoring color palette, a Bitsy room is a 128x128 image with black and white pixels.
-The dataset is composed of 591 rooms, extracted with a custom scrapper used on these Bitsy games : 
-- (...)
-- (...)
+The dataset is composed of 591 rooms, extracted with a custom scrapper used on this [list](https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/listOfGames.txt) of 21 Bitsy games.
 
 ## Preliminary Results
 
+The initial approach was to use the same GAN structure than the Avatar generation, only scaled to process 128x128 images.
+
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/mapResults1.png"  />
+
+- **Data shape**
+
+  Similarly, produced images need to be post-processed to only keep binary pixels. 
+ 
+- **Diversity**
+
+  Huge Mode Collapse.
+ - **Performance**
+ 
+   These performances where obtained after 4 hours of training on a Google Colaboratory dedicated machine, with GPU acceleration.  
+
+- **Aesthetic**
+
+  The shapes are structureless gradients, where Bitsy maps show these caracteristics : 
+  - local symetry
+  - pattern repetition
+  - complex structures made of unitary pieces
+
 ## Setting up a new structure
+
+
+
 
 ## Final Results
 
