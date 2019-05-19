@@ -5,7 +5,7 @@
 
 A Bitsy game generator, featuring  : 
  - a GAN to generate Avatars
- - a whole new Discriminator Network / Genetic Generator coupling to generate Rooms
+ - a whole new Discriminator Network / Adversarial Genetic Algorithm coupling to generate Rooms
  
  The AI generated game is available to [play here](https://pyrofoux.github.io/Drowsy/).
  
@@ -15,6 +15,7 @@ Below is an english summary.
 
 *Made during 2nd year of engineering school, at the École Nationale Supérieure de Cognitique (Bordeaux, 2019)*
 
+TODO : Link / intro
 
 # Avatar generation 
 
@@ -39,7 +40,7 @@ Here's the simplified structure of a GAN :
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/gan.png" width="70%" />
 </p>
 
-The Antagonist is composed of the Discriminator network and a Generator network layered together.
+The Adversarial part is composed of the Discriminator network and a Generator network layered together.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/adversarialNetwork.png" width="40%" />
@@ -115,27 +116,32 @@ Let's take another angle. We're looking for these characteristics :
   
 and they are commonly found in the realms of [Cellular Automata](https://en.wikipedia.org/wiki/Cellular_automaton).
 
-<p align="center"><img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/caveGen.gif"  /></p>
+<div align="center"> <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/caveGen.gif"  />
 
-*Example of cave-like level generation using cellular automata* ( [Source](https://codiecollinge.wordpress.com/2012/08/24/simple_2d_cave-like_generation) )
+*Example of cave-like level generation using cellular automata* ([Source](https://codiecollinge.wordpress.com/2012/08/24/simple_2d_cave-like_generation))
+</div>
 
+*TODO : short part about CA and map generation*
 
 Instead of directly handling all the pixels to create a room, we could manipulate the rules of a Cellular Automaton that generates room-like images. The main issue is that the algorithm running a CA is exact, well known and simple whereas our current architecture is based on neural networks running complex and evolving algorithms, relevant for unpredictable cases.
 
-There's a huge mismatch between the features we expect of the Antagonist, and it's nature. We need a structure both able to : 
+There's a huge mismatch between the features we expect of the Adversarial half, and it's nature. We need a structure both able to : 
 - generate images following a specific algorithm (Cellular Automata)
 - iteratively approach a criteria (fooling the Discriminator)
 
-Our approach is to change the Antagonist from being a neural network to a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm). The requirements to use such a structure are :
+Our approach is to change the Adversarial half from being a neural network to a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm). The requirements to use such a structure are :
 - being able to represent data as a set of **genes**
-- having a way to evaluate the quality with a **fitness function**
+- having a way to evaluate their quality with a **fitness function**
 
-In our case, the **genes** are the rules used to generate a room. They consist of the rules of a CA and the rules to generate the initial population of the grid (eg : the two parameters of a normal distribution). The key point is using the **evaluation** function of the Discriminator as the **fitness** function of our new Antagonist.
+In our case, the **genes** are the rules used to generate a room. They consist of the rules of a CA and the rules to generate the initial population of the grid (eg : the two parameters of a normal distribution). The key point is using the **evaluation** function of the Discriminator as the **fitness** function of our new Adversarial component.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/coupling.png" width="70%" /></p>
 
+If we see a GAN as a coupling between a Discriminator Network and an Antagonist Network (DN/AN), we can describe our new architecture as an asymmetric coupling between a Discriminator Network and an Adversarial Genetic Algorithm (DN/AGA).
+
 
 ## Final Results
+
 
 
