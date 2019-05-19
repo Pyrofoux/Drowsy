@@ -1,11 +1,11 @@
 # Drowsy - a Bitsy game generator
 <p align="center">
-<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/titleImage.png" width="256px" height="256px" />
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/titleImage.png" width="40%" />
 </p>
 
 A Bitsy game generator, featuring  : 
- - a GAN to generate avatars
- - a whole new Discriminator Network / Genetic Generator coupling to generate rooms
+ - a GAN to generate Avatars
+ - a whole new Discriminator Network / Genetic Generator coupling to generate Rooms
  
  The AI generated game is available to [play here](https://pyrofoux.github.io/Drowsy/).
  
@@ -21,14 +21,15 @@ Below is an english summary.
 ## Dataset
 
 
-<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Avatar.png"  />
+<p align="center"><img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Avatar.png" /></p>
 
-Ignoring color palette and animations, a Bitsy avatar is a 8x8 image with black and white pixels.
-The dataset is composed of 420 avatars, extracted from this compilation [tweet](https://twitter.com/ragzouken/status/939818949876830209).
+Ignoring color palette and animations, a Bitsy avatar is a 8x8 image with black and white pixels. The dataset is composed of 420 avatars, extracted from this compilation [tweet](https://twitter.com/ragzouken/status/939818949876830209).
 
 A few examples from the dataset : 
 
+<p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/avatarDataset.png" />
+</p>
 
 ## Generative Adversarial Network (GAN)
 
@@ -49,7 +50,9 @@ You can find more information about GANs [here](https://skymind.ai/wiki/generati
 
 ## Results
 
+<p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/avatarResults.png" width="40%" />
+</p>
 
 - **Data shape**
 
@@ -71,7 +74,7 @@ You can find more information about GANs [here](https://skymind.ai/wiki/generati
 
 ## Dataset
 
-<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Room.png" width="70%"  />
+<p align="center"><img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/eg-Room.png" width="50%"  /></p>
 
 Ignoring color palette, a Bitsy room is a 128x128 image with black and white pixels.
 The dataset is composed of 591 rooms, extracted with a custom scrapper used on this [list](https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/listOfGames.txt) of 21 Bitsy games.
@@ -80,7 +83,9 @@ The dataset is composed of 591 rooms, extracted with a custom scrapper used on t
 
 The initial approach was to use the same GAN structure than the Avatar generation, only scaled to process 128x128 images.
 
+<p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/mapResults1.png"  />
+</p>
 
 - **Data shape**
 
@@ -95,14 +100,40 @@ The initial approach was to use the same GAN structure than the Avatar generatio
 
 - **Aesthetic**
 
-  The shapes are structureless gradients, where Bitsy maps show these caracteristics : 
-  - local symetry
+  The shapes are structureless gradients, where Bitsy maps show these characteristics : 
+  - local symmetry
   - pattern repetition
   - complex structures made of unitary pieces
+ 
+## Setting up a new architecture : GADN
 
-## Setting up a new structure
+The unsatisfactory previous results led us to rethink the architecture behind Room generation.
+Let's take another angle. We're looking for these characteristics : 
+  - local symmetry
+  - pattern repetition
+  - complex structures made of unitary pieces
+  
+and they are commonly found in the realms of [Cellular Automata](https://en.wikipedia.org/wiki/Cellular_automaton).
+
+<p align="center"><img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/caveGen.gif"  /></p>
+
+*Example of cave-like level generation using cellular automata* ( [Source](https://codiecollinge.wordpress.com/2012/08/24/simple_2d_cave-like_generation) )
 
 
+Instead of directly handling all the pixels to create a room, we could manipulate the rules of a Cellular Automaton that generates room-like images. The main issue is that the algorithm running a CA is exact, well known and simple whereas our current architecture is based on neural networks running complex and evolving algorithms, relevant for unpredictable cases.
+
+There's a huge mismatch between the features we expect of the Antagonist, and it's nature. We need a structure both able to : 
+- generate images following a specific algorithm (Cellular Automata)
+- iteratively approach a criteria (fooling the Discriminator)
+
+Our approach is to change the Antagonist from being a neural network to a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm). The requirements to use such a structure are :
+- being able to represent data as a set of **genes**
+- having a way to evaluate the quality with a **fitness function**
+
+In our case, the **genes** are the rules used to generate a room. They consist of the rules of a CA and the rules to generate the initial population of the grid (eg : the two parameters of a normal distribution). The key point is using the **evaluation** function of the Discriminator as the **fitness** function of our new Antagonist.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/coupling.png" width="70%" /></p>
 
 
 ## Final Results
