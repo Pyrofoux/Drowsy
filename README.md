@@ -16,7 +16,7 @@ Here's the full [project report](https://github.com/Pyrofoux/Drowsy/raw/master/f
 Below is an english summary.
 
 
-For any questions, contact me at <yrabii@ensc.fr>, or on **Twitter**. I'm currently looking for opportunities to study AI and Computational Creativity, especially a PhD. Please get in touch !
+For any questions, contact me at <yrabii@ensc.fr>, or on [Twitter](https://twitter.com/Pyrofoux). I'm currently looking for opportunities to study AI and Computational Creativity, especially a PhD. Please get in touch !
 
 *Made in  3 months, during 2nd year of engineering school, at the École Nationale Supérieure de Cognitique (Bordeaux, 2019)*
 
@@ -215,4 +215,4 @@ Here are some observations we made empirically :
     - for the Adversarial Genetic Algorithm : the median fitness of the population below a specific threshold 
 
 
-For any questions, contact me at <yrabii@ensc.fr>, or on **Twitter**. I'm currently looking for opportunities to study AI and Computational Creativity, especially a PhD. Please get in touch !
+For any questions, contact me at <yrabii@ensc.fr>, or on [Twitter](https://twitter.com/Pyrofoux). I'm currently looking for opportunities to study AI and Computational Creativity, especially a PhD. Please get in touch !
