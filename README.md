@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/titleImage.png" width="40%" />
 </p>
 
-**Drowsy** is a school project aiming to build an AI architecture able to autonomously create a video game compatible with the [Bitsy](https://github.com/le-doux/bitsy) engine.
+**Drowsy** is a school project aiming to build an AI architecture able to autonomously create a video game compatible with the [Bitsy](https://github.com/le-doux/bitsy) game engine.
 
 It features  : 
  - a GAN to generate Avatars
@@ -20,8 +20,23 @@ For any questions, contact me at <yrabii@ensc.fr>, or on [Twitter](https://twitt
 
 *Made in  3 months during 2nd year of engineering school, at the École Nationale Supérieure de Cognitique (Bordeaux, 2019)*
 
+Table of Contents
+=================
 
-# Avatar generation 
+   * [Avatar Generation](#avatar-generation)
+      * [Dataset](#dataset)
+      * [Generative Adversarial Networks (GAN)](#generative-adversarial-networks-gan)
+      * [Results](#results)
+   * [Rooms Generation](#rooms-generation)
+      * [Dataset](#dataset-1)
+      * [Preliminary Results](#preliminary-results)
+      * [Building a new architecture : DN/AGA coupling](#building-a-new-architecture--dnaga-coupling)
+      * [Final Results](#final-results)
+   * [Conclusion](#conclusion)
+      * [Putting together the final game](#putting-together-the-final-game)
+      * [Studying the DN/AGA coupling](#studying-the-dnaga-coupling)
+
+# Avatar Generation 
 
 ## Dataset
 
