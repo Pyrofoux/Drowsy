@@ -1,4 +1,4 @@
-# Drowsy - Making an AI making tiny Bitsy video games
+# Drowsy - an AI making tiny Bitsy video games
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/titleImage.png" width="40%" />
 </p>
@@ -13,29 +13,13 @@ It features  :
  
  
 Here's the full [project report](https://github.com/Pyrofoux/Drowsy/raw/master/final/rapport.pdf) (French).
-Below is an english summary.
+Below is an English summary.
 
 
 For any questions, contact me at <yrabii@ensc.fr>, or on [Twitter](https://twitter.com/Pyrofoux). I'm currently looking for opportunities to study AI and Computational Creativity, especially a PhD. Please get in touch !
 
-*Made in  3 months, during 2nd year of engineering school, at the École Nationale Supérieure de Cognitique (Bordeaux, 2019)*
+*Made in  3 months during 2nd year of engineering school, at the École Nationale Supérieure de Cognitique (Bordeaux, 2019)*
 
-
-Table of Contents
-=================
-
-   * [Avatar generation](#avatar-generation)
-      * [Dataset](#dataset)
-      * [Generative Adversarial Network (GAN)](#generative-adversarial-network-gan)
-      * [Results](#results)
-   * [Rooms Generation](#rooms-generation)
-      * [Dataset](#dataset-1)
-      * [Preliminary Results](#preliminary-results)
-      * [Building a new architecture : DN/AGA coupling](#building-a-new-architecture--dnaga-coupling)
-      * [Final Results](#final-results)
-   * [Conclusion](#conclusion)
-      * [Making the final game](#making-the-final-game)
-      * [Studying the DN/AGA coupling](#studying-the-dnaga-coupling)
 
 # Avatar generation 
 
@@ -51,7 +35,7 @@ Ignoring color palette and animations, a Bitsy avatar is a 8x8 image with black 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/avatarDataset.png" /><br/><i>Examples from the avatars dataset</i></p>
 
-## Generative Adversarial Network (GAN)
+## Generative Adversarial Networks (GAN)
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/gan.png" width="70%" /><br/><i>Simplified structure of a GAN</i><br/><i></i></p>
@@ -72,8 +56,8 @@ You can find more information about GANs [here](https://skymind.ai/wiki/generati
 
 - **Data shape**
 
-  The Generator cannot produce binary data, only reals in the range \[0.0 - 1.0].
-  Produced avatars need a post-processing, to convert non-binary gray pixels to a black and white palette.
+  The Generator cannot produce binary data, but only real numbers in the range \[0.0 - 1.0].
+  Produced avatars need a post-processing to convert non-binary gray pixels to a black and white palette.
 - **Aesthetic**
 
   The shapes do look like Bitsy avatars. They are evocative, allowing the player to give them a meaning. 
@@ -128,7 +112,7 @@ Let's take another angle. We're looking for these characteristics :
   - pattern repetition
   - complex structures made of unitary pieces
   
-and they are commonly found in the realms of [Cellular Automata](https://en.wikipedia.org/wiki/Cellular_automaton).
+They are commonly found in the realms of [Cellular Automata](https://en.wikipedia.org/wiki/Cellular_automaton).
 
 <div align="center"> <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/caveGen.gif"  />
 
@@ -137,11 +121,11 @@ and they are commonly found in the realms of [Cellular Automata](https://en.wiki
 
 Cellular Automata are frequently used to procedurally generate video game levels. They iteratively apply local transformation rules to an initial grid until it has specific characteristics. Instead of directly handling all the pixels to create a room, we could manipulate the rules of a Cellular Automaton that generates room-like images.
 
-The main issue is that the algorithm running a CA is exact, well known and simple whereas our current architecture is based on neural networks running complex and evolving algorithms, relevant for unpredictable cases.
+The main issue is that the algorithm running a CA is exact, well-known and simple whereas our current architecture is based on neural networks running complex and evolving algorithms, relevant for unpredictable cases.
 
 There's a huge mismatch between the features we expect of the Adversarial half, and it's nature. We need a structure both able to : 
 - generate images following a specific algorithm (Cellular Automata)
-- iteratively approach a criteria (fooling the Discriminator)
+- iteratively approach a specific criterion (fooling the Discriminator)
 
 Our approach is to change the Adversarial half from being a neural network to a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm). The requirements to use such a structure are :
 - being able to represent data as a set of **genes**
@@ -152,7 +136,7 @@ In our case, the **genes** are the rules used to generate a room. They consist o
 <p align="center">
 <img src="https://raw.githubusercontent.com/Pyrofoux/Drowsy/master/final/coupling.png" width="70%" /><br/><i>Structure of the DN/AGA coupling</i></p>
 
-If we see a GAN as a coupling between a Discriminator Network and an Antagonist Network (DN/AN), we can describe our new architecture as an asymmetric coupling between a Discriminator Network and an Adversarial Genetic Algorithm (DN/AGA).
+If we see GANs as a coupling between a Discriminator Network and an Antagonist Network (DN/AN), we can describe our new architecture as an asymmetric coupling between a Discriminator Network and an Adversarial Genetic Algorithm (DN/AGA).
 
 
 
@@ -195,9 +179,9 @@ If we see a GAN as a coupling between a Discriminator Network and an Antagonist 
 
 # Conclusion
 
-## Making the final game
+## Putting together the final game
 
-The [final game](https://pyrofoux.github.io/Drowsy/) was made by compiling together a selection of rooms generated by several cellular automata, whose rules were designed after 1 hour of training by the DN/AGA coupling. The player's avatar was generated by a GAN, after 2 hours of training. We then manually added doors to go from one room to another, as well as an introduction and conclusion text.
+The [final game](https://pyrofoux.github.io/Drowsy/) was assembled by compiling together a selection of rooms generated by several cellular automata, whose rules were designed after 1 hour of training by the DN/AGA coupling. The player's avatar was generated by a GAN, after 2 hours of training. We then manually added doors to go from one room to another, as well as an introduction and conclusion text.
 
 
 ## Studying the DN/AGA coupling
